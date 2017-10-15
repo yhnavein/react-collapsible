@@ -196,7 +196,7 @@ class Collapsible extends Component {
 
 Collapsible.propTypes = {
   transitionTime: PropTypes.number,
-  triggerComponent: PropTypes.any,
+  triggerComponent: PropTypes.string,
   easing: PropTypes.string,
   open: PropTypes.bool,
   classParentString: PropTypes.string,
