@@ -167,7 +167,9 @@ class Collapsible extends Component {
       <div className={parentClassString.trim()}>
         <span
           className={triggerClassString.trim()}
-          onClick={this.handleTriggerClick}>
+          onClick={this.handleTriggerClick}
+          style={this.props.style}
+        >
           {trigger}
         </span>
 
