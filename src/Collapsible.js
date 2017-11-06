@@ -5,6 +5,8 @@ class Collapsible extends Component {
   constructor(props) {
     super(props)
 
+    this.timeout = undefined;
+    
     // Bind class methods
     this.handleTriggerClick = this.handleTriggerClick.bind(this);
     this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
@@ -40,7 +42,8 @@ class Collapsible extends Component {
     }
 
     if (prevState.height === 'auto' && this.state.shouldSwitchAutoOnNextCycle === true) {
-      window.setTimeout(() => { // Set small timeout to ensure a true re-render
+      window.clearTimeout(this.timeout);
+      this.timeout = window.setTimeout(() => { // Set small timeout to ensure a true re-render
         this.setState({
           height: 0,
           overflow: 'hidden',
@@ -58,6 +61,10 @@ class Collapsible extends Component {
         this.closeCollapsible();
       }
     }
+  }
+  
+  componentWillUnmount () {
+    window.clearTimeout(this.timeout);
   }
 
   closeCollapsible() {
