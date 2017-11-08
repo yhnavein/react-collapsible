@@ -64,7 +64,8 @@ class Collapsible extends Component {
     this.setState({
       shouldSwitchAutoOnNextCycle: true,
       height: this.refs.inner.offsetHeight,
-      transition: `height ${this.props.transitionTime}ms ${this.props.easing}`,
+      transition: `height ${this.props.transitionCloseTime ?
+        this.props.transitionCloseTime : this.props.transitionTime}ms ${this.props.easing}`,
       inTransition: true,
     });
   }
@@ -193,6 +194,7 @@ class Collapsible extends Component {
 
 Collapsible.propTypes = {
   transitionTime: PropTypes.number,
+  transitionCloseTime: PropTypes.number,
   easing: PropTypes.string,
   open: PropTypes.bool,
   classParentString: PropTypes.string,
@@ -234,6 +236,7 @@ Collapsible.propTypes = {
 
 Collapsible.defaultProps = {
   transitionTime: 400,
+  transitionCloseTime: null,
   easing: 'linear',
   open: false,
   classParentString: 'Collapsible',
