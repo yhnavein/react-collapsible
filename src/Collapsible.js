@@ -169,7 +169,9 @@ class Collapsible extends Component {
       <div className={parentClassString.trim()}>
         <span
           className={triggerClassString.trim()}
-          onClick={this.handleTriggerClick}>
+          onClick={this.handleTriggerClick}
+          style={this.props.triggerStyle && this.props.triggerStyle}
+        >
           {trigger}
         </span>
 
@@ -199,6 +201,7 @@ Collapsible.propTypes = {
   open: PropTypes.bool,
   classParentString: PropTypes.string,
   openedClassName: PropTypes.string,
+  triggerStyle: PropTypes.object,
   triggerClassName: PropTypes.string,
   triggerOpenedClassName: PropTypes.string,
   contentOuterClassName: PropTypes.string,
@@ -243,6 +246,7 @@ Collapsible.defaultProps = {
   lazyRender: false,
   overflowWhenOpen: 'hidden',
   openedClassName: '',
+  triggerStyle: null,
   triggerClassName: '',
   triggerOpenedClassName: '',
   contentOuterClassName: '',

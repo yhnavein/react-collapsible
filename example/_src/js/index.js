@@ -80,6 +80,9 @@ const App = () => {
         <p>You also get the <strong>is-disabled</strong> CSS class so you can style it.</p>
       </Collapsible>
 
+      <Collapsible trigger={"Add a triggerStyle Prop to add style directly to the trigger"} triggerStyle={{background: '#2196f3'}}>
+        <p>Adds a <code>style</code> attribute to the <code>span</code> trigger.</p>
+      </Collapsible>
     </div>
   );
 };
