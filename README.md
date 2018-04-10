@@ -70,6 +70,9 @@ With a little CSS becomes
 ### **trigger** | *string* or *React Element* | **required**
 The text or element to appear in the trigger link.
 
+### **triggerTagName** | *string* | default: span
+The tag name of the element wrapping the trigger text or element.
+
 ### **triggerWhenOpen** | *string* or *React Element*
 Optional trigger text or element to change to when the Collapsible is open.
 

@@ -150,6 +150,9 @@ class Collapsible extends Component {
                   ? this.props.triggerWhenOpen
                   : this.props.trigger;
 
+    // If user wants a trigger wrapping element different than 'span'
+    const TriggerElement = this.props.triggerTagName;
+
     // Don't render children until the first opening of the Collapsible if lazy rendering is enabled
     var children = this.props.lazyRender
       && !this.state.hasBeenOpened
@@ -168,13 +171,13 @@ class Collapsible extends Component {
 
     return(
       <div className={parentClassString.trim()}>
-        <span
+        <TriggerElement
           className={triggerClassString.trim()}
           onClick={this.handleTriggerClick}
           style={this.props.triggerStyle && this.props.triggerStyle}
         >
           {trigger}
-        </span>
+        </TriggerElement>
 
         {this.renderNonClickableTriggerElement()}
 
@@ -199,6 +202,7 @@ class Collapsible extends Component {
 Collapsible.propTypes = {
   transitionTime: PropTypes.number,
   transitionCloseTime: PropTypes.number,
+  triggerTagName: PropTypes.string,
   easing: PropTypes.string,
   open: PropTypes.bool,
   classParentString: PropTypes.string,
@@ -242,6 +246,7 @@ Collapsible.propTypes = {
 Collapsible.defaultProps = {
   transitionTime: 400,
   transitionCloseTime: null,
+  triggerTagName: 'span',
   easing: 'linear',
   open: false,
   classParentString: 'Collapsible',
