@@ -61,6 +61,11 @@ const App = () => {
         <img src="https://lorempixel.com/320/240?random=6" />
       </Collapsible>
 
+      <Collapsible trigger='You can set a custom trigger tag name.' triggerTagName='div'>
+        <p>Use the <code>`triggerTagName`</code> prop to set the trigger wrapping element.</p>
+        <p>Defaults to <code>span</code>.</p>
+      </Collapsible>
+
       <Collapsible trigger="You can customise the CSS a bit more too"
         triggerClassName="CustomTriggerCSS"
         triggerOpenedClassName="CustomTriggerCSS--open"
@@ -80,6 +85,9 @@ const App = () => {
         <p>You also get the <strong>is-disabled</strong> CSS class so you can style it.</p>
       </Collapsible>
 
+      <Collapsible trigger={"Add a triggerStyle Prop to add style directly to the trigger"} triggerStyle={{background: '#2196f3'}}>
+        <p>Adds a <code>style</code> attribute to the <code>span</code> trigger.</p>
+      </Collapsible>
     </div>
   );
 };

@@ -12,7 +12,7 @@ Supported by [Browserstack](https://www.browserstack.com).
 
 ---
 ## Migrating from v1.x to v2.x
-Version 2 is 100% API complete to version 1. However, there is a breaking change in the `onOpen` and `onClose` callbacks. These methods now fire at the end of the collapsing animation. There is also the addition of `onOpening` and `onClosing` callbacks which fire at the beginning of the animation. 
+Version 2 is 100% API complete to version 1. However, there is a breaking change in the `onOpen` and `onClose` callbacks. These methods now fire at the end of the collapsing animation. There is also the addition of `onOpening` and `onClosing` callbacks which fire at the beginning of the animation.
 
 To migrate to v2 from v1 simply change the `onOpen` prop to `onOpening` and `onClose` to `onClosing`.
 
@@ -70,6 +70,9 @@ With a little CSS becomes
 ### **trigger** | *string* or *React Element* | **required**
 The text or element to appear in the trigger link.
 
+### **triggerTagName** | *string* | default: span
+The tag name of the element wrapping the trigger text or element.
+
 ### **triggerWhenOpen** | *string* or *React Element*
 Optional trigger text or element to change to when the Collapsible is open.
 
@@ -78,6 +81,9 @@ Disables the trigger handler if `true`. Note: this has no effect other than appl
 
 ### **transitionTime** | *number* | default: 400
 The number of milliseconds for the open/close transition to take.
+
+### **transitionCloseTime** | *number* | default: null
+The number of milliseconds for the close transition to take.
 
 ### **easing** | *string* | default: 'linear'
 The CSS easing method you wish to apply to the open/close transition. This string can be any valid value of CSS `transition-timing-function`. For reference view the [MDN documentation](https://developer.mozilla.org/en/docs/Web/CSS/transition-timing-function).
@@ -118,22 +124,22 @@ after `.Collapsible__trigger`
 ### **classParentString** | *string* | default: Collapsible
 Use this to overwrite the parent CSS class for the Collapsible component parts. Read more in the CSS section below.
 
-### **className** | *string* 
+### **className** | *string*
 `.Collapsible` element (root) when closed
 
-### **openedClassName** | *string* 
+### **openedClassName** | *string*
 `.Collapsible` element (root) when open
 
-### **triggerClassName** | *string* 
+### **triggerClassName** | *string*
 `.Collapsible__trigger` element (root) when closed
 
-### **triggerOpenedClassName** | *string* 
+### **triggerOpenedClassName** | *string*
 `.Collapsible__trigger` element (root) when open
 
-### **contentOuterClassName** | *string* 
+### **contentOuterClassName** | *string*
 `.Collapsible__contentOuter` element
 
-### **contentInnerClassName** | *string* 
+### **contentInnerClassName** | *string*
 `.Collapsible__contentInner` element
 
 ---
@@ -165,7 +171,14 @@ If you're using a CSS framework such as Foundation or Bootstrap, you probably wa
 
 ---
 ## Example
-An example of the component in action is available in the example folder. To see it in action you can run `webpack-dev-server` which will run the webpack build and open the example.
+An example of the component in action is available in the example folder. To see it in action you can run 
+
+```bash
+$ npm i
+$ npm run example
+```
+
+This will run the webpack build and open the example.
 
 ---
 ## Licence
