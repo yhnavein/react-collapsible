@@ -181,7 +181,7 @@ class Collapsible extends Component {
                 this.handleTriggerClick(event);
               }
             }}
-            tabIndex={this.props.tabIndex}
+            tabIndex={this.props.tabIndex && this.props.tabIndex}
         >
           {trigger}
         </TriggerElement>
@@ -273,7 +273,7 @@ Collapsible.defaultProps = {
   onClose: () => {},
   onOpening: () => {},
   onClosing: () => {},
-  tabIndex: 0,
+  tabIndex: null,
 };
 
 export default Collapsible;
