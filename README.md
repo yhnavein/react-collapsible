@@ -119,6 +119,9 @@ The CSS overflow property once the Collapsible is open. This can be any one of t
 Escape hatch to add arbitrary content on the trigger without triggering expand/collapse. It's up to you to style it as needed. This is inserted in component tree and DOM directly
 after `.Collapsible__trigger`
 
+### **tabIndex** | *number* | default: null
+A tabindex number to allow the Collapsible trigger to gain focus.
+
 ---
 ## CSS Class String Props
 ### **classParentString** | *string* | default: Collapsible
@@ -171,7 +174,7 @@ If you're using a CSS framework such as Foundation or Bootstrap, you probably wa
 
 ---
 ## Example
-An example of the component in action is available in the example folder. To see it in action you can run 
+An example of the component in action is available in the example folder. To see it in action you can run
 
 ```bash
 $ npm i

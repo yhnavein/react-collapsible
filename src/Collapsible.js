@@ -175,6 +175,13 @@ class Collapsible extends Component {
           className={triggerClassString.trim()}
           onClick={this.handleTriggerClick}
           style={this.props.triggerStyle && this.props.triggerStyle}
+          onKeyPress={(event) => {
+            const { key } = event;
+              if (key === ' ' || key === 'Enter') {
+                this.handleTriggerClick(event);
+              }
+            }}
+            tabIndex={this.props.tabIndex && this.props.tabIndex}
         >
           {trigger}
         </TriggerElement>
@@ -241,6 +248,7 @@ Collapsible.propTypes = {
     PropTypes.element,
     PropTypes.func,
   ]),
+  tabIndex: PropTypes.number,
 }
 
 Collapsible.defaultProps = {
@@ -265,6 +273,7 @@ Collapsible.defaultProps = {
   onClose: () => {},
   onOpening: () => {},
   onClosing: () => {},
+  tabIndex: null,
 };
 
 export default Collapsible;
