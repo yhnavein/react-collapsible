@@ -16,24 +16,16 @@ Version 2 is 100% API complete to version 1. However, there is a breaking change
 
 To migrate to v2 from v1 simply change the `onOpen` prop to `onOpening` and `onClose` to `onClosing`.
 
-# What's new in version 2.0.3
-Issues fixed (#50, #52)
-
-### 2.0.0 release notes
-* Added `onClosing` and `onOpening` callback props.
-* Several issue fixes (#12, #21, #24)
-
-
----
 ## Installation
-Installation can be achieved via NPM.
+Install via npm or yarn
+
 ```
-npm install react-collapsible
+npm install react-collapsible --save
+yarn add react-collapsible
 ```
 
 Alternatively just download the `Collapsible.js` file form the `src` folder and include it in your project in your chosen way.
 
----
 ## Usage
 Collapsible can receive any HTML elements or React component as it's children. Collapsible will wrap the contents, as well as generate a trigger element which will control showing and hiding.
 
@@ -65,13 +57,15 @@ With a little CSS becomes
 
 ![Alt text](example/img/becomes.png)
 
----
 ## Properties *(Options)*
 ### **trigger** | *string* or *React Element* | **required**
 The text or element to appear in the trigger link.
 
 ### **triggerTagName** | *string* | default: span
 The tag name of the element wrapping the trigger text or element.
+
+### **triggerStyle** | *object* | default: null
+Adds a style attribute to the trigger.
 
 ### **triggerWhenOpen** | *string* or *React Element*
 Optional trigger text or element to change to when the Collapsible is open.
@@ -120,9 +114,9 @@ Escape hatch to add arbitrary content on the trigger without triggering expand/c
 after `.Collapsible__trigger`
 
 ### **tabIndex** | *number* | default: null
-A tabindex number to allow the Collapsible trigger to gain focus.
+A `tabIndex` prop adds the `tabIndex` attribute to the trigger element which in turn allows the Collapsible trigger to gain focus.
 
----
+
 ## CSS Class String Props
 ### **classParentString** | *string* | default: Collapsible
 Use this to overwrite the parent CSS class for the Collapsible component parts. Read more in the CSS section below.
@@ -145,7 +139,7 @@ Use this to overwrite the parent CSS class for the Collapsible component parts. 
 ### **contentInnerClassName** | *string*
 `.Collapsible__contentInner` element
 
----
+
 ## CSS Styles
 In theory you don't need any CSS to get this to work, but let's face it, it'd be pretty rubbish without it.
 
@@ -172,7 +166,6 @@ This is a container for the content passed into the component. This keeps everyt
 
 If you're using a CSS framework such as Foundation or Bootstrap, you probably want to use their classes instead of styling `.Collapsible`. See Properties above.
 
----
 ## Example
 An example of the component in action is available in the example folder. To see it in action you can run
 
@@ -183,6 +176,5 @@ $ npm run example
 
 This will run the webpack build and open the example.
 
----
 ## Licence
 React Responsive Collapsible Section Component is [MIT licensed](LICENSE.md)
