@@ -9,7 +9,7 @@ const triggerSiblingExample = () => <div className="Collapsible__custom-sibling"
 const App = () => {
   return (
     <div>
-      <Collapsible trigger="Start here">
+      <Collapsible tabIndex={0} trigger="Start here">
         <p>This is the collapsible content. It can be any element or React component you like.</p>
         <p>It can even be another Collapsible component. Check out the next section!</p>
       </Collapsible>
