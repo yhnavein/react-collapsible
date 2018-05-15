@@ -176,5 +176,12 @@ $ npm run example
 
 This will run the webpack build and open the example.
 
+## Issues
+
+Please create an issue for any bug or feature requests.
+
+Here is a plain [JSFiddle](https://jsfiddle.net/sm7n31p1/1/) to use for replicating bugs.
+
+
 ## Licence
 React Responsive Collapsible Section Component is [MIT licensed](LICENSE.md)
