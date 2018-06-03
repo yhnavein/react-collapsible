@@ -1,3 +1,5 @@
+[![npm version](https://badge.fury.io/js/react-collapsible.svg)](https://badge.fury.io/js/react-collapsible)
+
 # React Responsive Collapsible Section Component (Collapsible)
 
 React component to wrap content in Collapsible element with trigger to open and close.
