@@ -1,4 +1,4 @@
-[![npm version](https://badge.fury.io/js/react-collapsible.svg)](https://badge.fury.io/js/react-collapsible)
+![Npm Version](https://img.shields.io/npm/v/react-collapsible.svg?style=flat-square) ![Monthly Downloads](https://img.shields.io/npm/l/react-collapsible.svg?style=flat-square)
 
 # React Responsive Collapsible Section Component (Collapsible)
 
