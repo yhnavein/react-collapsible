@@ -1,4 +1,4 @@
-![Npm Version](https://img.shields.io/npm/v/react-collapsible.svg?style=flat-square) ![Monthly Downloads](https://img.shields.io/npm/l/react-collapsible.svg?style=flat-square)
+[![Npm Version](https://img.shields.io/npm/v/react-collapsible.svg?style=flat-square)](https://www.npmjs.com/package/react-collapsible) [![License](https://img.shields.io/npm/l/react-collapsible.svg?style=flat-square)](https://github.com/glennflanagan/react-collapsible/blob/develop/LICENSE.md)
 
 # React Responsive Collapsible Section Component (Collapsible)
 
