@@ -10,6 +10,7 @@
     "accordion"
   ],
   "main": "dist/Collapsible.js",
+  "types": "./index.d.ts",
   "author": "Glenn Flanagan <glenn@arctictiger.co.uk>",
   "contributors": [
     "Karl Taylor <karl_taylor@me.com",
