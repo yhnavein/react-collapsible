@@ -34,7 +34,7 @@ interface CollapsibleProps extends React.HTMLProps<Collapsible> {
     | 'unset'
   triggerSibling?: React.ReactElement<any>
   className?: string
-  tabIndex?: null | number
+  tabIndex?: number
 }
 
 declare module 'react-collapsible' {
