@@ -154,6 +154,8 @@ class Collapsible extends Component {
     var trigger = (this.state.isClosed === false) && (this.props.triggerWhenOpen !== undefined)
                   ? this.props.triggerWhenOpen
                   : this.props.trigger;
+    
+    const ContentContainerElement = this.props.contentContainerTagName;
 
     // If user wants a trigger wrapping element different than 'span'
     const TriggerElement = this.props.triggerTagName;
@@ -175,7 +177,7 @@ class Collapsible extends Component {
     const innerClassString = `${this.props.classParentString}__contentInner ${this.props.contentInnerClassName}`;
 
     return(
-      <div className={parentClassString.trim()}>
+      <ContentContainerElement className={parentClassString.trim()}>
         <TriggerElement
           className={triggerClassString.trim()}
           onClick={this.handleTriggerClick}
@@ -205,7 +207,7 @@ class Collapsible extends Component {
             {children}
           </div>
         </div>
-      </div>
+      </ContentContainerElement>
     );
   }
 }
@@ -253,6 +255,7 @@ Collapsible.propTypes = {
     PropTypes.func,
   ]),
   tabIndex: PropTypes.number,
+  contentContainerTagName: PropTypes.string,
 }
 
 Collapsible.defaultProps = {
@@ -278,6 +281,7 @@ Collapsible.defaultProps = {
   onOpening: () => {},
   onClosing: () => {},
   tabIndex: null,
+  contentContainerTagName: 'div',
 };
 
 export default Collapsible;
