@@ -139,7 +139,7 @@ class Collapsible extends Component {
   }
 
   render() {
-    var dropdownStyle = {
+    const dropdownStyle = {
       height: this.state.height,
       WebkitTransition: this.state.transition,
       msTransition: this.state.transition,
