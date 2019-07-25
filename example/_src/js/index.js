@@ -88,6 +88,20 @@ const App = () => {
       <Collapsible trigger={"Add a triggerStyle Prop to add style directly to the trigger"} triggerStyle={{background: '#2196f3'}}>
         <p>Adds a <code>style</code> attribute to the <code>span</code> trigger.</p>
       </Collapsible>
+      <Collapsible trigger="Pass properties to element" containerElementProps={{ id: 'my-cool-identifier', lang: 'en' }} triggerStyle={{ background: '#6821f3' }}>
+        <p>Some element attributes (<strong>id & lang</strong>) have been passed as properties using <strong>containerElementProps</strong>.</p>
+        <div style={{ display: 'grid' }}>
+          <img src="https://lorempixel.com/320/240?random=1" />
+          <img src="https://lorempixel.com/320/240?random=2" />
+          <img src="https://lorempixel.com/320/240?random=3" />
+          <img src="https://lorempixel.com/320/240?random=4" />
+          <img src="https://lorempixel.com/320/240?random=5" />
+          <img src="https://lorempixel.com/320/240?random=6" />
+        </div>
+        <div style={{ padding: '50px' }}>
+          <button onClick={ () => document.getElementById('my-cool-identifier').scrollIntoView() }>Scroll to my id</button>
+        </div>
+      </Collapsible>
     </div>
   );
 };
