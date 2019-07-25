@@ -88,7 +88,7 @@ const App = () => {
       <Collapsible trigger={"Add a triggerStyle Prop to add style directly to the trigger"} triggerStyle={{background: '#2196f3'}}>
         <p>Adds a <code>style</code> attribute to the <code>span</code> trigger.</p>
       </Collapsible>
-      <Collapsible trigger="Pass properties to element" containerElementProps={{ id: 'my-cool-identifier', lang: 'en' }} triggerStyle={{ background: '#6821f3' }}>
+      <Collapsible trigger="Pass properties to top element" containerElementProps={{ id: 'my-cool-identifier', lang: 'en' }} triggerStyle={{ background: '#6821f3' }}>
         <p>Some element attributes (<strong>id & lang</strong>) have been passed as properties using <strong>containerElementProps</strong>.</p>
         <div style={{ display: 'grid' }}>
           <img src="https://lorempixel.com/320/240?random=1" />
