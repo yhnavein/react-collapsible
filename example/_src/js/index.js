@@ -75,7 +75,7 @@ const App = () => {
         <p>This is the collapsible content. It can be any element or React component you like.</p>
       </Collapsible>
 
-      <Collapsible trigger="You can disable them programatically too" open triggerDisabled>
+      <Collapsible trigger="You can disable them programmatically too" open triggerDisabled>
         <p>This one has it's trigger disabled in the open position. Nifty.</p>
         <p>You also get the <strong>is-disabled</strong> CSS class so you can style it.</p>
       </Collapsible>
