@@ -35,6 +35,7 @@ export interface CollapsibleProps extends React.HTMLProps<Collapsible> {
   triggerSibling?: React.ReactElement<any>
   className?: string
   tabIndex?: number
+  contentContainerTagName?: string
 }
 
 declare module 'react-collapsible' {
