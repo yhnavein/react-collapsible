@@ -185,7 +185,7 @@ class Collapsible extends Component {
     const innerClassString = `${this.props.classParentString}__contentInner ${this.props.contentInnerClassName}`;
 
     return(
-      <ContentContainerElement className={parentClassString.trim()}>
+      <ContentContainerElement className={parentClassString.trim()} {...this.props.containerElementProps} >
         <TriggerElement
           className={triggerClassString.trim()}
           onClick={this.handleTriggerClick}
@@ -226,6 +226,7 @@ Collapsible.propTypes = {
   triggerTagName: PropTypes.string,
   easing: PropTypes.string,
   open: PropTypes.bool,
+  containerElementProps: PropTypes.object,
   classParentString: PropTypes.string,
   openedClassName: PropTypes.string,
   triggerStyle: PropTypes.object,
