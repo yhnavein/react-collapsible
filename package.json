@@ -1,6 +1,6 @@
 {
   "name": "react-collapsible",
-  "version": "2.6.3",
+  "version": "2.7.0",
   "description": "React component to wrap content in Collapsible element with trigger to open and close.",
   "keywords": [
     "react-component",
