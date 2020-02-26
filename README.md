@@ -82,6 +82,9 @@ Optional trigger text or element to change to when the Collapsible is open.
 ### **triggerDisabled** | *boolean* | default: false
 Disables the trigger handler if `true`. Note: this has no effect other than applying the `.is-disabled` CSS class if you've provided a `handleTriggerClick` prop.
 
+### **triggerElementProps** | *object*
+Pass props (or attributes) to the trigger wrapping element. Useful for inserting `role` when using `tabIndex`.
+
 ### **transitionTime** | *number* | default: 400
 The number of milliseconds for the open/close transition to take.
 
