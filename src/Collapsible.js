@@ -112,9 +112,11 @@ class Collapsible extends Component {
       if (this.state.isClosed === true) {
         this.openCollapsible();
         this.props.onOpening();
+        this.props.onTriggerOpening();
       } else {
         this.closeCollapsible();
         this.props.onClosing();
+        this.props.onTriggerClosing();
       }
     }
   }
@@ -246,6 +248,8 @@ Collapsible.propTypes = {
   onClose: PropTypes.func,
   onOpening: PropTypes.func,
   onClosing: PropTypes.func,
+  onTriggerOpening: PropTypes.func,
+  onTriggerClosing: PropTypes.func,
   trigger: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element
@@ -295,6 +299,8 @@ Collapsible.defaultProps = {
   onClose: () => { },
   onOpening: () => { },
   onClosing: () => { },
+  onTriggerOpening: () => { },
+  onTriggerClosing: () => { },
   tabIndex: null,
   contentContainerTagName: 'div',
 };
