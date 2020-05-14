@@ -196,7 +196,7 @@ class Collapsible extends Component {
           style={this.props.triggerStyle && this.props.triggerStyle}
           onKeyPress={(event) => {
             const { key } = event;
-            if ((key === ' ' && this.props.triggerTagName.toLowerCase() !== 'button') || key === 'Enter') {
+            if (key === ' ' || key === 'Enter') {
               this.handleTriggerClick(event);
             }
           }}
