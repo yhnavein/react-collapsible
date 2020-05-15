@@ -99,7 +99,7 @@ class Collapsible extends Component {
   }
 
   handleTriggerClick(event) {
-    if (this.props.triggerDisabled) {
+    if (this.props.triggerDisabled || this.state.inTransition) {
       return
     }
 
@@ -112,9 +112,11 @@ class Collapsible extends Component {
       if (this.state.isClosed === true) {
         this.openCollapsible();
         this.props.onOpening();
+        this.props.onTriggerOpening();
       } else {
         this.closeCollapsible();
         this.props.onClosing();
+        this.props.onTriggerClosing();
       }
     }
   }
@@ -124,6 +126,8 @@ class Collapsible extends Component {
       return (
         <span className={`${this.props.classParentString}__trigger-sibling`}>{this.props.triggerSibling}</span>
       )
+    } else if (this.props.triggerSibling && typeof this.props.triggerSibling === 'function') {    
+      return this.props.triggerSibling();
     } else if (this.props.triggerSibling) {
       return <this.props.triggerSibling />
     }
@@ -196,7 +200,7 @@ class Collapsible extends Component {
           style={this.props.triggerStyle && this.props.triggerStyle}
           onKeyPress={(event) => {
             const { key } = event;
-            if (key === ' ' || key === 'Enter') {
+            if ((key === ' ' && this.props.triggerTagName.toLowerCase() !== 'button') || key === 'Enter') {
               this.handleTriggerClick(event);
             }
           }}
@@ -246,6 +250,8 @@ Collapsible.propTypes = {
   onClose: PropTypes.func,
   onOpening: PropTypes.func,
   onClosing: PropTypes.func,
+  onTriggerOpening: PropTypes.func,
+  onTriggerClosing: PropTypes.func,
   trigger: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element
@@ -295,6 +301,8 @@ Collapsible.defaultProps = {
   onClose: () => { },
   onOpening: () => { },
   onClosing: () => { },
+  onTriggerOpening: () => { },
+  onTriggerClosing: () => { },
   tabIndex: null,
   contentContainerTagName: 'div',
 };

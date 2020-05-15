@@ -21,6 +21,8 @@ export interface CollapsibleProps extends React.HTMLProps<Collapsible> {
   onClose?: () => void;
   onOpening?: () => void;
   onClosing?: () => void;
+  onTriggerOpening?: () => void;
+  onTriggerClosing?: () => void;
   trigger: string | React.ReactElement<any>;
   triggerWhenOpen?: string | React.ReactElement<any>;
   triggerDisabled?: boolean;
