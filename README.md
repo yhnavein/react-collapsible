@@ -115,6 +115,12 @@ Is called when the Collapsible is opening.
 ### **onClosing** | *function*
 Is called when the Collapsible is closing.
 
+### **onTriggerOpening** | *function*
+Is called when the Collapsible open trigger is clicked. Like onOpening except it isn't called when the open prop is updated.
+
+### **onTriggerClosing** | *function*
+Is called when the Collapsible close trigger is clicked. Like onClosing except it isn't called when the open prop is updated.
+
 ### **lazyRender** | *bool* | default: false
 Set this to true to postpone rendering of all of the content of the Collapsible until before it's opened for the first time
 
