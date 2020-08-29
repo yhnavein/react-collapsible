@@ -7,12 +7,6 @@ class Collapsible extends Component {
 
     this.timeout = undefined;
 
-    // Bind class methods
-    this.handleTriggerClick = this.handleTriggerClick.bind(this);
-    this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
-    this.continueOpenCollapsible = this.continueOpenCollapsible.bind(this);
-    this.setInnerRef = this.setInnerRef.bind(this);
-
     // Defaults the dropdown to be closed
     if (props.open) {
       this.state = {
@@ -94,7 +88,7 @@ class Collapsible extends Component {
     });
   }
 
-  continueOpenCollapsible() {
+  continueOpenCollapsible = () => {
     this.setState({
       height: this.innerRef.scrollHeight,
       transition: `height ${this.props.transitionTime}ms ${this.props.easing}`,
@@ -103,9 +97,9 @@ class Collapsible extends Component {
       inTransition: true,
       shouldOpenOnNextCycle: false,
     });
-  }
+  };
 
-  handleTriggerClick(event) {
+  handleTriggerClick = (event) => {
     if (this.props.triggerDisabled || this.state.inTransition) {
       return;
     }
@@ -125,7 +119,7 @@ class Collapsible extends Component {
         this.props.onTriggerClosing();
       }
     }
-  }
+  };
 
   renderNonClickableTriggerElement() {
     if (
@@ -148,7 +142,7 @@ class Collapsible extends Component {
     return null;
   }
 
-  handleTransitionEnd(e) {
+  handleTransitionEnd = (e) => {
     // only handle transitions that origin from the container of this component
     if (e.target !== this.innerRef) {
       return;
@@ -165,11 +159,9 @@ class Collapsible extends Component {
       this.setState({ inTransition: false });
       this.props.onClose();
     }
-  }
+  };
 
-  setInnerRef(ref) {
-    this.innerRef = ref;
-  }
+  setInnerRef = (ref) => (this.innerRef = ref);
 
   render() {
     const dropdownStyle = {
