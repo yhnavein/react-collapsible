@@ -1,14 +1,12 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import Collapsible from "../../src/Collapsible";
-
-// import "../sass/main.scss";
+import React from 'react'
+import ReactDOM from 'react-dom'
+import Collapsible from '../../src/Collapsible'
 
 const triggerSiblingExample = () => (
   <div className="Collapsible__custom-sibling">
     This is a sibling to the trigger which wont cause the Collapsible to open!
   </div>
-);
+)
 
 const App = () => {
   return (
@@ -67,7 +65,7 @@ const App = () => {
       <Collapsible
         transitionTime={400}
         trigger="This one will blow your mind."
-        easing={"cubic-bezier(0.175, 0.885, 0.32, 2.275)"}
+        easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
       >
         <p>
           Well maybe not. But did you see that little wiggle at the end. That is
@@ -118,12 +116,12 @@ const App = () => {
         lazyRender
         transitionTime={600}
         trigger="What happens if there's a shed-load of content?"
-        easing={"cubic-bezier(0.175, 0.885, 0.32, 2.275)"}
+        easing={'cubic-bezier(0.175, 0.885, 0.32, 2.275)'}
         overflowWhenOpen="visible"
       >
         <p>
-          Add the prop of{" "}
-          <strong style={{ fontWeight: "bold" }}>lazyRender</strong> and the
+          Add the prop of{' '}
+          <strong style={{ fontWeight: 'bold' }}>lazyRender</strong> and the
           content will only be rendered when the trigger is pressed
         </p>
         <img src="https://lorempixel.com/320/240?random=1" />
@@ -184,8 +182,8 @@ const App = () => {
       </Collapsible>
 
       <Collapsible
-        trigger={"Add a triggerStyle Prop to add style directly to the trigger"}
-        triggerStyle={{ background: "#2196f3" }}
+        trigger={'Add a triggerStyle Prop to add style directly to the trigger'}
+        triggerStyle={{ background: '#2196f3' }}
       >
         <p>
           Adds a <code>style</code> attribute to the <code>span</code> trigger.
@@ -193,14 +191,14 @@ const App = () => {
       </Collapsible>
       <Collapsible
         trigger="Pass properties to top element"
-        containerElementProps={{ id: "my-cool-identifier", lang: "en" }}
-        triggerStyle={{ background: "#6821f3" }}
+        containerElementProps={{ id: 'my-cool-identifier', lang: 'en' }}
+        triggerStyle={{ background: '#6821f3' }}
       >
         <p>
           Some element attributes (<strong>id & lang</strong>) have been passed
           as properties using <strong>containerElementProps</strong>.
         </p>
-        <div style={{ display: "grid" }}>
+        <div style={{ display: 'grid' }}>
           <img src="https://lorempixel.com/320/240?random=1" />
           <img src="https://lorempixel.com/320/240?random=2" />
           <img src="https://lorempixel.com/320/240?random=3" />
@@ -208,10 +206,10 @@ const App = () => {
           <img src="https://lorempixel.com/320/240?random=5" />
           <img src="https://lorempixel.com/320/240?random=6" />
         </div>
-        <div style={{ padding: "50px" }}>
+        <div style={{ padding: '50px' }}>
           <button
             onClick={() =>
-              document.getElementById("my-cool-identifier").scrollIntoView()
+              document.getElementById('my-cool-identifier').scrollIntoView()
             }
           >
             Scroll to my id
@@ -219,7 +217,7 @@ const App = () => {
         </div>
       </Collapsible>
     </div>
-  );
-};
+  )
+}
 
-ReactDOM.render(<App />, document.querySelector("#root"));
+ReactDOM.render(<App />, document.querySelector('#root'))

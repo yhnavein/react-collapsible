@@ -9,7 +9,7 @@
     "collapsible",
     "accordion"
   ],
-  "main": "dist/Collapsible.js",
+  "main": "dist/index.js",
   "types": "./index.d.ts",
   "author": "Glenn Flanagan <glenn@arctictiger.co.uk>",
   "contributors": [
@@ -19,6 +19,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.4",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "autoprefixer": "^7.1.2",
@@ -49,7 +50,7 @@
   "scripts": {
     "build": "webpack",
     "prepare": "npm run build",
-    "example": "parcel example/index.html --out-dir example/dist",
+    "example": "parcel example/index.html --out-dir example/dist --cache-dir example/cache --log-level 4 --open",
     "test": "jest"
   },
   "peerDependencies": {
