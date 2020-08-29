@@ -49,7 +49,7 @@
   "scripts": {
     "build": "webpack",
     "prepare": "npm run build",
-    "example": "parcel example/index.html",
+    "example": "parcel example/index.html --out-dir example/dist",
     "test": "jest"
   },
   "peerDependencies": {

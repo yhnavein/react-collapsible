@@ -2,3 +2,8 @@ node_modules
 .DS_Store
 npm-debug.log
 dist/*.js
+
+# Parcel builds for example
+.cache
+example/dist
+
