@@ -8,11 +8,13 @@ export interface CollapsibleProps extends React.HTMLProps<Collapsible> {
   triggerTagName?: string;
   easing?: string;
   open?: boolean;
+  containerElementProps?: object;
   classParentString?: string;
   openedClassName?: string;
   triggerStyle?: null | React.CSSProperties;
   triggerClassName?: string;
   triggerOpenedClassName?: string;
+  triggerElementProps?: object;
   contentOuterClassName?: string;
   contentInnerClassName?: string;
   accordionPosition?: string | number;
