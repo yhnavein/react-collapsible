@@ -217,6 +217,7 @@ class Collapsible extends Component {
           style={dropdownStyle}
           onTransitionEnd={this.handleTransitionEnd}
           ref={this.setInnerRef}
+          hidden={this.props.contentHiddenWhenClosed && this.state.isClosed && !this.state.inTransition}
         >
           <div
             className={innerClassString.trim()}
@@ -271,6 +272,7 @@ Collapsible.propTypes = {
     'initial',
     'unset',
   ]),
+  contentHiddenWhenClosed: PropTypes.bool,
   triggerSibling: PropTypes.oneOfType([
     PropTypes.element,
     PropTypes.func,
@@ -289,6 +291,7 @@ Collapsible.defaultProps = {
   triggerDisabled: false,
   lazyRender: false,
   overflowWhenOpen: 'hidden',
+  contentHiddenWhenClosed: false,
   openedClassName: '',
   triggerStyle: null,
   triggerClassName: '',
