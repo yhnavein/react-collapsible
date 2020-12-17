@@ -35,7 +35,7 @@ describe('<Collapsible />', () => {
 
   it('given a closed Collapsible fires the onOpening prop when clicked to open', () => {
     const mockOnOpening = jest.fn();
-    const collapsible = shallow(<Collapsible trigger='Hello World' onOpening={mockOnOpening}/> );
+    const collapsible = mount(<Collapsible trigger='Hello World' onOpening={mockOnOpening}/>);
     const trigger = collapsible.find('.Collapsible__trigger');
 
     expect(trigger).toHaveLength(1);
