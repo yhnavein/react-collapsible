@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   mode: 'production',
@@ -7,6 +7,11 @@ module.exports = {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
     libraryTarget: 'umd',
+    /**
+     * Makes UMD build available on both browsers and Node.js
+     * https://webpack.js.org/configuration/output/#outputglobalobject
+     */
+    globalObject: 'this',
   },
   externals: ['react'],
   module: {
@@ -20,4 +25,4 @@ module.exports = {
       },
     ],
   },
-}
+};
