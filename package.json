@@ -46,8 +46,7 @@
     "test": "jest"
   },
   "peerDependencies": {
-    "prop-types": "^15.5.8",
-    "react": "~15 || ~16",
-    "react-dom": "~15 || ~16"
+    "react": "~15 || ~16 || ~17",
+    "react-dom": "~15 || ~16 || ~17"
   }
 }
