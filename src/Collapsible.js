@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import setInTransition from './setInTransition';
+
 class Collapsible extends Component {
   constructor(props) {
     super(props);
@@ -37,7 +39,7 @@ class Collapsible extends Component {
     }
 
     if (
-      prevState.height === 'auto' &&
+      (prevState.height === 'auto' || prevState.height === 0) &&
       this.state.shouldSwitchAutoOnNextCycle === true
     ) {
       window.clearTimeout(this.timeout);
@@ -69,32 +71,36 @@ class Collapsible extends Component {
   }
 
   closeCollapsible() {
+    const { innerRef } = this;
+
     this.setState({
       shouldSwitchAutoOnNextCycle: true,
-      height: this.innerRef.scrollHeight,
+      height: innerRef.scrollHeight,
       transition: `height ${
         this.props.transitionCloseTime
           ? this.props.transitionCloseTime
           : this.props.transitionTime
       }ms ${this.props.easing}`,
-      inTransition: true,
+      inTransition: setInTransition(innerRef.scrollHeight),
     });
   }
 
   openCollapsible() {
     this.setState({
-      inTransition: true,
+      inTransition: setInTransition(this.innerRef.scrollHeight),
       shouldOpenOnNextCycle: true,
     });
   }
 
   continueOpenCollapsible = () => {
+    const { innerRef } = this;
+
     this.setState({
-      height: this.innerRef.scrollHeight,
+      height: innerRef.scrollHeight,
       transition: `height ${this.props.transitionTime}ms ${this.props.easing}`,
       isClosed: false,
       hasBeenOpened: true,
-      inTransition: true,
+      inTransition: setInTransition(innerRef.scrollHeight),
       shouldOpenOnNextCycle: false,
     });
   };

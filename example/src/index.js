@@ -1,12 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Collapsible from '../../src/Collapsible'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Collapsible from '../../dist';
+
+import ZeroHeightCollapsible from './examples/ZeroHeightCollapsible';
 
 const triggerSiblingExample = () => (
   <div className="Collapsible__custom-sibling">
     This is a sibling to the trigger which wont cause the Collapsible to open!
   </div>
-)
+);
 
 const App = () => {
   return (
@@ -216,8 +218,10 @@ const App = () => {
           </button>
         </div>
       </Collapsible>
-    </div>
-  )
-}
 
-ReactDOM.render(<App />, document.querySelector('#root'))
+      <ZeroHeightCollapsible />
+    </div>
+  );
+};
+
+ReactDOM.render(<App />, document.querySelector('#root'));
