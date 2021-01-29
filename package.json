@@ -22,21 +22,14 @@
     "@babel/plugin-proposal-class-properties": "^7.10.4",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
-    "autoprefixer": "^7.1.2",
     "babel-loader": "^8.1.0",
     "babel-preset-react": "^6.11.1",
-    "css-loader": "^3.2.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "jest": "^26.0.1",
-    "mini-css-extract-plugin": "^0.8.0",
-    "node-sass": "^4.14.1",
-    "parcel": "^1.12.4",
-    "postcss-loader": "^3.0.0",
     "prop-types": "^15.6.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "sass-loader": "^8.0.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
@@ -50,7 +43,6 @@
   "scripts": {
     "build": "webpack",
     "prepare": "npm run build",
-    "example": "parcel example/index.html --out-dir example/dist --cache-dir example/cache --log-level 4 --open",
     "test": "jest"
   },
   "peerDependencies": {

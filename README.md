@@ -186,21 +186,20 @@ This is a container for the content passed into the component. This keeps everyt
 If you're using a CSS framework such as Foundation or Bootstrap, you probably want to use their classes instead of styling `.Collapsible`. See Properties above.
 
 ## Example
-An example of the component in action is available in the example folder. To see it in action you can run
 
-```bash
-$ npm i
-$ npm run example
+Examples of `<Collapsible />` components can be found in the `./example` folder. To get the example running:
+
+```
+cd example && yarn && yarn start
 ```
 
-This will run the webpack build and open the example.
+This will run a [parceljs](https://parceljs.org) app.
 
 ## Issues
 
 Please create an issue for any bug or feature requests.
 
 Here is a plain [JSFiddle](https://jsfiddle.net/sm7n31p1/1/) to use for replicating bugs.
-
 
 ## Licence
 React Responsive Collapsible Section Component is [MIT licensed](LICENSE.md)
