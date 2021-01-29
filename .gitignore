@@ -1,4 +1,10 @@
-node_modules
 .DS_Store
-npm-debug.log
 dist/*.js
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Parcel builds for example
+example/.cache
+example/dist
+

@@ -1,17 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import setInTransition from './setInTransition';
+
 class Collapsible extends Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.timeout = undefined;
-
-    // Bind class methods
-    this.handleTriggerClick = this.handleTriggerClick.bind(this);
-    this.handleTransitionEnd = this.handleTransitionEnd.bind(this);
-    this.continueOpenCollapsible = this.continueOpenCollapsible.bind(this);
-    this.setInnerRef = this.setInnerRef.bind(this);
 
     // Defaults the dropdown to be closed
     if (props.open) {
@@ -23,7 +19,7 @@ class Collapsible extends Component {
         hasBeenOpened: true,
         overflow: props.overflowWhenOpen,
         inTransition: false,
-      }
+      };
     } else {
       this.state = {
         isClosed: true,
@@ -33,7 +29,7 @@ class Collapsible extends Component {
         hasBeenOpened: false,
         overflow: 'hidden',
         inTransition: false,
-      }
+      };
     }
   }
 
@@ -42,9 +38,13 @@ class Collapsible extends Component {
       this.continueOpenCollapsible();
     }
 
-    if (prevState.height === 'auto' && this.state.shouldSwitchAutoOnNextCycle === true) {
+    if (
+      (prevState.height === 'auto' || prevState.height === 0) &&
+      this.state.shouldSwitchAutoOnNextCycle === true
+    ) {
       window.clearTimeout(this.timeout);
-      this.timeout = window.setTimeout(() => { // Set small timeout to ensure a true re-render
+      this.timeout = window.setTimeout(() => {
+        // Set small timeout to ensure a true re-render
         this.setState({
           height: 0,
           overflow: 'hidden',
@@ -71,40 +71,46 @@ class Collapsible extends Component {
   }
 
   closeCollapsible() {
+    const { innerRef } = this;
+
     this.setState({
       shouldSwitchAutoOnNextCycle: true,
-      height: this.innerRef.scrollHeight,
-      transition: `height ${this.props.transitionCloseTime ?
-        this.props.transitionCloseTime : this.props.transitionTime}ms ${this.props.easing}`,
-      inTransition: true,
+      height: innerRef.scrollHeight,
+      transition: `height ${
+        this.props.transitionCloseTime
+          ? this.props.transitionCloseTime
+          : this.props.transitionTime
+      }ms ${this.props.easing}`,
+      inTransition: setInTransition(innerRef.scrollHeight),
     });
   }
 
   openCollapsible() {
     this.setState({
-      inTransition: true,
+      inTransition: setInTransition(this.innerRef.scrollHeight),
       shouldOpenOnNextCycle: true,
     });
   }
 
-  continueOpenCollapsible() {
+  continueOpenCollapsible = () => {
+    const { innerRef } = this;
+
     this.setState({
-      height: this.innerRef.scrollHeight,
+      height: innerRef.scrollHeight,
       transition: `height ${this.props.transitionTime}ms ${this.props.easing}`,
       isClosed: false,
       hasBeenOpened: true,
-      inTransition: true,
+      inTransition: setInTransition(innerRef.scrollHeight),
       shouldOpenOnNextCycle: false,
     });
-  }
+  };
 
-  handleTriggerClick(event) {
+  handleTriggerClick = (event) => {
     if (this.props.triggerDisabled || this.state.inTransition) {
-      return
+      return;
     }
 
     event.preventDefault();
-
 
     if (this.props.handleTriggerClick) {
       this.props.handleTriggerClick(this.props.accordionPosition);
@@ -119,40 +125,49 @@ class Collapsible extends Component {
         this.props.onTriggerClosing();
       }
     }
-  }
+  };
 
   renderNonClickableTriggerElement() {
-    if (this.props.triggerSibling && typeof this.props.triggerSibling === 'string') {
+    if (
+      this.props.triggerSibling &&
+      typeof this.props.triggerSibling === 'string'
+    ) {
       return (
-        <span className={`${this.props.classParentString}__trigger-sibling`}>{this.props.triggerSibling}</span>
-      )
-    } else if (this.props.triggerSibling && typeof this.props.triggerSibling === 'function') {    
+        <span className={`${this.props.classParentString}__trigger-sibling`}>
+          {this.props.triggerSibling}
+        </span>
+      );
+    } else if (
+      this.props.triggerSibling &&
+      typeof this.props.triggerSibling === 'function'
+    ) {
       return this.props.triggerSibling();
     } else if (this.props.triggerSibling) {
-      return <this.props.triggerSibling />
+      return <this.props.triggerSibling />;
     }
-
     return null;
   }
 
-  handleTransitionEnd(e) {
+  handleTransitionEnd = (e) => {
     // only handle transitions that origin from the container of this component
     if (e.target !== this.innerRef) {
       return;
     }
     // Switch to height auto to make the container responsive
     if (!this.state.isClosed) {
-      this.setState({ height: 'auto', overflow: this.props.overflowWhenOpen, inTransition: false });
+      this.setState({
+        height: 'auto',
+        overflow: this.props.overflowWhenOpen,
+        inTransition: false,
+      });
       this.props.onOpen();
     } else {
       this.setState({ inTransition: false });
       this.props.onClose();
     }
-  }
+  };
 
-  setInnerRef(ref) {
-    this.innerRef = ref
-  }
+  setInnerRef = (ref) => (this.innerRef = ref);
 
   render() {
     const dropdownStyle = {
@@ -161,15 +176,16 @@ class Collapsible extends Component {
       msTransition: this.state.transition,
       transition: this.state.transition,
       overflow: this.state.overflow,
-    }
+    };
 
     var openClass = this.state.isClosed ? 'is-closed' : 'is-open';
     var disabledClass = this.props.triggerDisabled ? 'is-disabled' : '';
 
     //If user wants different text when tray is open
-    var trigger = (this.state.isClosed === false) && (this.props.triggerWhenOpen !== undefined)
-      ? this.props.triggerWhenOpen
-      : this.props.trigger;
+    var trigger =
+      this.state.isClosed === false && this.props.triggerWhenOpen !== undefined
+        ? this.props.triggerWhenOpen
+        : this.props.trigger;
 
     const ContentContainerElement = this.props.contentContainerTagName;
 
@@ -177,30 +193,44 @@ class Collapsible extends Component {
     const TriggerElement = this.props.triggerTagName;
 
     // Don't render children until the first opening of the Collapsible if lazy rendering is enabled
-    var children = this.props.lazyRender
-      && !this.state.hasBeenOpened
-      && this.state.isClosed
-      && !this.state.inTransition ? null : this.props.children;
+    var children =
+      this.props.lazyRender &&
+      !this.state.hasBeenOpened &&
+      this.state.isClosed &&
+      !this.state.inTransition
+        ? null
+        : this.props.children;
 
     // Construct CSS classes strings
-    const triggerClassString = `${this.props.classParentString}__trigger ${openClass} ${disabledClass} ${
-      this.state.isClosed ? this.props.triggerClassName : this.props.triggerOpenedClassName
-      }`;
+    const triggerClassString = `${
+      this.props.classParentString
+    }__trigger ${openClass} ${disabledClass} ${
+      this.state.isClosed
+        ? this.props.triggerClassName
+        : this.props.triggerOpenedClassName
+    }`;
     const parentClassString = `${this.props.classParentString} ${
       this.state.isClosed ? this.props.className : this.props.openedClassName
-      }`;
+    }`;
     const outerClassString = `${this.props.classParentString}__contentOuter ${this.props.contentOuterClassName}`;
     const innerClassString = `${this.props.classParentString}__contentInner ${this.props.contentInnerClassName}`;
 
     return (
-      <ContentContainerElement className={parentClassString.trim()} {...this.props.containerElementProps} >
+      <ContentContainerElement
+        className={parentClassString.trim()}
+        {...this.props.containerElementProps}
+      >
         <TriggerElement
           className={triggerClassString.trim()}
           onClick={this.handleTriggerClick}
           style={this.props.triggerStyle && this.props.triggerStyle}
           onKeyPress={(event) => {
             const { key } = event;
-            if ((key === ' ' && this.props.triggerTagName.toLowerCase() !== 'button') || key === 'Enter') {
+            if (
+              (key === ' ' &&
+                this.props.triggerTagName.toLowerCase() !== 'button') ||
+              key === 'Enter'
+            ) {
               this.handleTriggerClick(event);
             }
           }}
@@ -217,13 +247,13 @@ class Collapsible extends Component {
           style={dropdownStyle}
           onTransitionEnd={this.handleTransitionEnd}
           ref={this.setInnerRef}
-          hidden={this.props.contentHiddenWhenClosed && this.state.isClosed && !this.state.inTransition}
+          hidden={
+            this.props.contentHiddenWhenClosed &&
+            this.state.isClosed &&
+            !this.state.inTransition
+          }
         >
-          <div
-            className={innerClassString.trim()}
-          >
-            {children}
-          </div>
+          <div className={innerClassString.trim()}>{children}</div>
         </div>
       </ContentContainerElement>
     );
@@ -253,14 +283,8 @@ Collapsible.propTypes = {
   onClosing: PropTypes.func,
   onTriggerOpening: PropTypes.func,
   onTriggerClosing: PropTypes.func,
-  trigger: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element
-  ]),
-  triggerWhenOpen: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element
-  ]),
+  trigger: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  triggerWhenOpen: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   triggerDisabled: PropTypes.bool,
   lazyRender: PropTypes.bool,
   overflowWhenOpen: PropTypes.oneOf([
@@ -273,13 +297,10 @@ Collapsible.propTypes = {
     'unset',
   ]),
   contentHiddenWhenClosed: PropTypes.bool,
-  triggerSibling: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.func,
-  ]),
+  triggerSibling: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   tabIndex: PropTypes.number,
   contentContainerTagName: PropTypes.string,
-}
+};
 
 Collapsible.defaultProps = {
   transitionTime: 400,
@@ -300,12 +321,12 @@ Collapsible.defaultProps = {
   contentInnerClassName: '',
   className: '',
   triggerSibling: null,
-  onOpen: () => { },
-  onClose: () => { },
-  onOpening: () => { },
-  onClosing: () => { },
-  onTriggerOpening: () => { },
-  onTriggerClosing: () => { },
+  onOpen: () => {},
+  onClose: () => {},
+  onOpening: () => {},
+  onClosing: () => {},
+  onTriggerOpening: () => {},
+  onTriggerClosing: () => {},
   tabIndex: null,
   contentContainerTagName: 'div',
 };
