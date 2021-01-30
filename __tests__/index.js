@@ -1,6 +1,6 @@
-// Tests for Collapsible.
+/* eslint-disable react/prop-types */
 import React from 'react';
-import { configure, shallow, mount, render } from 'enzyme';
+import { configure, shallow, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
 import Collapsible from '../src/Collapsible';
@@ -172,7 +172,7 @@ describe('<Collapsible />', () => {
       expect(wrapper.state().height).toBe(0);
       expect(wrapper.state().isClosed).toBe(true);
 
-      const trigger = wrapper.find('.Collapsible__trigger').simulate('click');
+      wrapper.find('.Collapsible__trigger').simulate('click');
 
       expect(wrapper.state().isClosed).toBe(false);
     });

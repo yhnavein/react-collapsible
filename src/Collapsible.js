@@ -202,18 +202,24 @@ class Collapsible extends Component {
         : this.props.children;
 
     // Construct CSS classes strings
-    const triggerClassString = `${
-      this.props.classParentString
-    }__trigger ${openClass} ${disabledClass} ${
+    const {
+      classParentString,
+      contentOuterClassName,
+      contentInnerClassName,
+    } = this.props;
+
+    const triggerClassString = `${classParentString}__trigger ${openClass} ${disabledClass} ${
       this.state.isClosed
         ? this.props.triggerClassName
         : this.props.triggerOpenedClassName
     }`;
-    const parentClassString = `${this.props.classParentString} ${
+
+    const parentClassString = `${classParentString} ${
       this.state.isClosed ? this.props.className : this.props.openedClassName
     }`;
-    const outerClassString = `${this.props.classParentString}__contentOuter ${this.props.contentOuterClassName}`;
-    const innerClassString = `${this.props.classParentString}__contentInner ${this.props.contentInnerClassName}`;
+
+    const outerClassString = `${classParentString}__contentOuter ${contentOuterClassName}`;
+    const innerClassString = `${classParentString}__contentInner ${contentInnerClassName}`;
 
     return (
       <ContentContainerElement
@@ -269,6 +275,7 @@ Collapsible.propTypes = {
   containerElementProps: PropTypes.object,
   triggerElementProps: PropTypes.object,
   classParentString: PropTypes.string,
+  className: PropTypes.string,
   openedClassName: PropTypes.string,
   triggerStyle: PropTypes.object,
   triggerClassName: PropTypes.string,
@@ -300,6 +307,7 @@ Collapsible.propTypes = {
   triggerSibling: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
   tabIndex: PropTypes.number,
   contentContainerTagName: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 Collapsible.defaultProps = {
