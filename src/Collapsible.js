@@ -242,6 +242,7 @@ class Collapsible extends Component {
           }}
           tabIndex={this.props.tabIndex && this.props.tabIndex}
           aria-expanded={!this.state.isClosed}
+          aria-disabled={this.props.triggerDisabled}
           {...this.props.triggerElementProps}
         >
           {trigger}
