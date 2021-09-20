@@ -132,7 +132,7 @@ class Collapsible extends Component {
   };
 
   renderNonClickableTriggerElement() {
-    const { triggerSibling } = this.props;
+    const { triggerSibling, classParentString } = this.props;
     if (!triggerSibling) return null;
 
     const triggerSiblingType = typeof triggerSibling;
@@ -140,14 +140,14 @@ class Collapsible extends Component {
     switch (triggerSiblingType) {
       case 'string':
         return (
-          <span className={`${this.props.classParentString}__trigger-sibling`}>
-            {this.props.triggerSibling}
+          <span className={`${classParentString}__trigger-sibling`}>
+            {triggerSibling}
           </span>
         );
       case 'function':
-        return this.props.triggerSibling();
+        return triggerSibling();
       case 'object':
-        return this.props.triggerSibling;
+        return triggerSibling;
       default:
         return null;
     }
