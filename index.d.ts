@@ -38,7 +38,7 @@ export interface CollapsibleProps extends React.HTMLProps<Collapsible> {
     | "initial"
     | "unset";
   contentHiddenWhenClosed?: boolean;
-  triggerSibling?: React.ReactElement<any>;
+  triggerSibling?: string | React.ReactElement<any>;
   className?: string;
   tabIndex?: number;
   contentContainerTagName?: string;

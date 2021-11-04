@@ -315,7 +315,7 @@ Collapsible.propTypes = {
     'unset',
   ]),
   contentHiddenWhenClosed: PropTypes.bool,
-  triggerSibling: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  triggerSibling: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.func]),
   tabIndex: PropTypes.number,
   contentContainerTagName: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
