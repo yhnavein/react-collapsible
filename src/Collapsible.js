@@ -285,6 +285,7 @@ Collapsible.propTypes = {
   open: PropTypes.bool,
   containerElementProps: PropTypes.object,
   triggerElementProps: PropTypes.object,
+  contentElementId: PropTypes.string,
   classParentString: PropTypes.string,
   className: PropTypes.string,
   openedClassName: PropTypes.string,
