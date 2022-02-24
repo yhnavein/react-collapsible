@@ -94,7 +94,7 @@ Disables the trigger handler if `true`. Note: this has no effect other than appl
 
 Pass props (or attributes) to the trigger wrapping element. Useful for inserting `role` when using `tabIndex`.
 
-As an alternative to an auto generated id (which is not guaranteed to be unique in extremely fast builds)that is used as the TriggerElement id, and also as a separate `aria-labelledby` attribute, a custom id can be assigned by providing `triggerElementProps` with an object containing an `id` key and value, e.g. `{id: 'some-value'}`.
+As an alternative to an auto generated id (which is not guaranteed to be unique in extremely fast builds) that is used as the TriggerElement id, and also as a separate `aria-labelledby` attribute, a custom id can be assigned by providing `triggerElementProps` with an object containing an `id` key and value, e.g. `{id: 'some-value'}`.
 
 ### **contentElementId** | _string_
 
