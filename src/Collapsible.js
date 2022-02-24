@@ -9,7 +9,7 @@ class Collapsible extends Component {
 
     this.timeout = undefined;
 
-    this.contentId = `collapsible-content-${Date.now()}`;
+    this.contentId = props.contentElementId || `collapsible-content-${Date.now()}`;
     this.triggerId = props.triggerElementProps.id || `collapsible-trigger-${Date.now()}`;
 
     // Defaults the dropdown to be closed
@@ -285,6 +285,7 @@ Collapsible.propTypes = {
   open: PropTypes.bool,
   containerElementProps: PropTypes.object,
   triggerElementProps: PropTypes.object,
+  contentElementId: PropTypes.string,
   classParentString: PropTypes.string,
   className: PropTypes.string,
   openedClassName: PropTypes.string,
