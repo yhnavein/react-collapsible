@@ -1,2 +1,9 @@
 example/
+.github/
+__tests__/
 .history
+.babelrc
+.eslintrc.js
+.prettierrc
+webpack.config.js
+.gitkeep

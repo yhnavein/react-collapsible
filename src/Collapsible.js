@@ -9,8 +9,10 @@ class Collapsible extends Component {
 
     this.timeout = undefined;
 
-    this.contentId = props.contentElementId || `collapsible-content-${Date.now()}`;
-    this.triggerId = props.triggerElementProps.id || `collapsible-trigger-${Date.now()}`;
+    this.contentId =
+      props.contentElementId || `collapsible-content-${Date.now()}`;
+    this.triggerId =
+      props.triggerElementProps.id || `collapsible-trigger-${Date.now()}`;
 
     // Defaults the dropdown to be closed
     if (props.open) {
@@ -205,11 +207,8 @@ class Collapsible extends Component {
         : this.props.children;
 
     // Construct CSS classes strings
-    const {
-      classParentString,
-      contentOuterClassName,
-      contentInnerClassName,
-    } = this.props;
+    const { classParentString, contentOuterClassName, contentInnerClassName } =
+      this.props;
 
     const triggerClassString = `${classParentString}__trigger ${openClass} ${disabledClass} ${
       this.state.isClosed
@@ -268,6 +267,7 @@ class Collapsible extends Component {
             !this.state.inTransition
           }
           role="region"
+          aria-expanded={!this.state.isClosed}
           aria-labelledby={this.triggerId}
         >
           <div className={innerClassString.trim()}>{children}</div>
@@ -316,7 +316,11 @@ Collapsible.propTypes = {
     'unset',
   ]),
   contentHiddenWhenClosed: PropTypes.bool,
-  triggerSibling: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.func]),
+  triggerSibling: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
+    PropTypes.func,
+  ]),
   tabIndex: PropTypes.number,
   contentContainerTagName: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
@@ -349,7 +353,7 @@ Collapsible.defaultProps = {
   onTriggerClosing: () => {},
   tabIndex: null,
   contentContainerTagName: 'div',
-  triggerElementProps: {}
+  triggerElementProps: {},
 };
 
 export default Collapsible;
